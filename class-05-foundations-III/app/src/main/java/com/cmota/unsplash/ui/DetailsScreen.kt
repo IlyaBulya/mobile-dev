@@ -97,14 +97,14 @@ fun DetailsScreen(
       Row(
         modifier = Modifier
           .fillMaxWidth()
-          .offset(y = (-30).dp) // Offset to overlap with the image
+          .offset(y = (-60).dp) // Adjusted offset to move it further down
           .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
       ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
           Image(
-            painter = painterResource(R.drawable.bcn_la_sagrada_familia), // Placeholder for user avatar, assuming drawable exists
+            painter = painterResource(R.drawable.bcn_la_sagrada_familia), // Placeholder for user avatar, assuming drawable exists. Please replace R.drawable.bcn_la_sagrada_familia with your actual avatar image resource.
             contentDescription = "User Avatar",
             modifier = Modifier
               .size(60.dp)
@@ -145,6 +145,14 @@ fun DetailsScreen(
           )
         }
 
+        HorizontalDivider(
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+          thickness = 1.dp,
+          color = Color.LightGray
+        )
+
         Row {
           AddPhotoInfoRow(
             title1 = R.string.info_focal_length,
@@ -153,6 +161,14 @@ fun DetailsScreen(
             subtitle2 = R.string.info_shutter_speed_placeholder
           )
         }
+
+        HorizontalDivider(
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+          thickness = 1.dp,
+          color = Color.LightGray
+        )
 
         Row {
           AddPhotoInfoRow(
