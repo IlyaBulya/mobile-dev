@@ -48,6 +48,7 @@ dependencies {
   implementation(libs.androidx.material3)
 
   implementation("io.coil-kt.coil3:coil-compose:3.2.0")
+  implementation(libs.androidx.material.icons.extended)
 
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
