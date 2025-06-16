@@ -97,14 +97,14 @@ fun DetailsScreen(
       Row(
         modifier = Modifier
           .fillMaxWidth()
-          .offset(y = (-60).dp) // Adjusted offset to move it further down
+          .offset(y = (20).dp) // Adjusted offset to move it further down
           .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
       ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
           Image(
-            painter = painterResource(R.drawable.bcn_la_sagrada_familia), // Placeholder for user avatar, assuming drawable exists. Please replace R.drawable.bcn_la_sagrada_familia with your actual avatar image resource.
+            painter = painterResource(R.drawable.profile), // Placeholder for user avatar, assuming drawable exists. Please replace R.drawable.profile_avatar_1 with your actual avatar image resource.
             contentDescription = "User Avatar",
             modifier = Modifier
               .size(60.dp)
@@ -133,6 +133,14 @@ fun DetailsScreen(
           }
         }
       }
+      HorizontalDivider(
+        modifier = Modifier
+          .fillMaxWidth()
+          .offset(y = (20).dp)
+          .padding(16.dp),
+        thickness = 1.dp,
+        color = Color.LightGray
+      )
 
       // Original Photo Info Rows - adjust padding
       Column(modifier = Modifier.padding(top = 16.dp)) {
@@ -145,14 +153,6 @@ fun DetailsScreen(
           )
         }
 
-        HorizontalDivider(
-          modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-          thickness = 1.dp,
-          color = Color.LightGray
-        )
-
         Row {
           AddPhotoInfoRow(
             title1 = R.string.info_focal_length,
@@ -161,14 +161,6 @@ fun DetailsScreen(
             subtitle2 = R.string.info_shutter_speed_placeholder
           )
         }
-
-        HorizontalDivider(
-          modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-          thickness = 1.dp,
-          color = Color.LightGray
-        )
 
         Row {
           AddPhotoInfoRow(
@@ -213,8 +205,14 @@ fun DetailsScreen(
           Text(stringResource(R.string.info_likes_placeholder), color = Color.White)
         }
       }
-
-      Spacer(modifier = Modifier.height(16.dp)) // Add some space before the buttons
+      HorizontalDivider(
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(16.dp),
+        thickness = 1.dp,
+        color = Color.LightGray
+      )
+      Spacer(modifier = Modifier.height(0.dp)) // Add some space before the buttons
 
       // Tag buttons
       Row(
