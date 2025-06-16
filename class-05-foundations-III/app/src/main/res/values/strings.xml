@@ -35,4 +35,9 @@
   <string name="description_bcn_sagrada_familia">View from Sagrada Familia</string>
   <string name="description_image">This is an image from a Barcelona monument</string>
   <string name="description_search">Search icon</string>
+
+  <string name="location_barcelona_spain">Barcelona, Spain</string>
+  <string name="user_biel_morro">Biel Morro</string>
+  <string name="tag_barcelona">barcelona</string>
+  <string name="tag_spain">spain</string>
 </resources>
