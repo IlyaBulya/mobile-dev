@@ -2,6 +2,8 @@ package com.cmota.unsplash.ui
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,9 +34,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -51,6 +58,28 @@ fun DetailsScreen(
   @DrawableRes image: Int,
   onAction: (Int) -> Unit = {}
 ) {
+  var isDownloaded by remember { mutableStateOf(false) }
+  var isLiked by remember { mutableStateOf(false) }
+  var isBookmarked by remember { mutableStateOf(false) }
+
+  val downloadScale by animateFloatAsState(
+    targetValue = if (isDownloaded) 1.2f else 1f,
+    animationSpec = tween(durationMillis = 300),
+    label = "download"
+  )
+
+  val likeScale by animateFloatAsState(
+    targetValue = if (isLiked) 1.2f else 1f,
+    animationSpec = tween(durationMillis = 300),
+    label = "like"
+  )
+
+  val bookmarkScale by animateFloatAsState(
+    targetValue = if (isBookmarked) 1.2f else 1f,
+    animationSpec = tween(durationMillis = 300),
+    label = "bookmark"
+  )
+
   Column(modifier = Modifier.fillMaxSize().background(Color.Black)) { // Set background to black
     Box(
       modifier = Modifier
@@ -122,14 +151,35 @@ fun DetailsScreen(
         }
 
         Row {
-          IconButton(onClick = { /* Handle download */ }) {
-            Icon(Icons.Filled.Download, contentDescription = "Download", tint = Color.White)
+          IconButton(
+            onClick = { isDownloaded = !isDownloaded },
+            modifier = Modifier.scale(downloadScale)
+          ) {
+            Icon(
+              Icons.Filled.Download,
+              contentDescription = "Download",
+              tint = if (isDownloaded) Color.Green else Color.White
+            )
           }
-          IconButton(onClick = { /* Handle like */ }) {
-            Icon(Icons.Filled.Favorite, contentDescription = "Like", tint = Color.White)
+          IconButton(
+            onClick = { isLiked = !isLiked },
+            modifier = Modifier.scale(likeScale)
+          ) {
+            Icon(
+              Icons.Filled.Favorite,
+              contentDescription = "Like",
+              tint = if (isLiked) Color.Red else Color.White
+            )
           }
-          IconButton(onClick = { /* Handle bookmark */ }) {
-            Icon(Icons.Filled.Bookmark, contentDescription = "Bookmark", tint = Color.White)
+          IconButton(
+            onClick = { isBookmarked = !isBookmarked },
+            modifier = Modifier.scale(bookmarkScale)
+          ) {
+            Icon(
+              Icons.Filled.Bookmark,
+              contentDescription = "Bookmark",
+              tint = if (isBookmarked) Color.Yellow else Color.White
+            )
           }
         }
       }
